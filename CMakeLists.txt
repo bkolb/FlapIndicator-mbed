@@ -19,7 +19,7 @@ include(./mbed-cmake.cmake)
 project("Mbed CMake Template" LANGUAGES C CXX ASM)
 
 # For convenience you can define useful variables
-set(LIBS_DIR ${ROOT_DIR}/libs)
+set(SRC_DIR ${ROOT_DIR}/src)
 set(SPIKES_DIR ${ROOT_DIR}/spikes)
 set(TARGETS_DIR ${ROOT_DIR}/targets)
 
@@ -27,16 +27,16 @@ set(TARGETS_DIR ${ROOT_DIR}/targets)
 add_target_board_subdirectory("${TARGET_BOARD}")
 
 # Add libraries
-add_subdirectory(${LIBS_DIR}/HelloWorld)
-add_subdirectory(${LIBS_DIR}/Common)
-add_subdirectory(${LIBS_DIR}/FrontSeat)
-add_subdirectory(${LIBS_DIR}/BackSeat)
+add_subdirectory(${SRC_DIR}/Common)
+add_subdirectory(${SRC_DIR}/CommonMbed)
+add_subdirectory(${SRC_DIR}/FrontSeat)
+add_subdirectory(${SRC_DIR}/BackSeat)
 
 # If you use spikes to test features, you can add them here
 # add_subdirectory(${SPIKES_DIR}/blinky)
 
 # Add the main source files of the project from ./src
-add_subdirectory(${ROOT_DIR}/src)
+#add_subdirectory(${ROOT_DIR}/src)
 
 # Finally print the mbed-cmake build report
 mbed_cmake_print_build_report()

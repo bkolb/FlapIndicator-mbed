@@ -6,7 +6,9 @@ add_library(lib_common_flap STATIC)
 
 target_sources(lib_common_flap
   PRIVATE
-    HelloWorld.cpp
+    AbstractFlapPosReader.cpp
+    AbstractStateExchange.cpp
+    BackSeat.cpp
 )
 
 target_include_directories(lib_common_flap
@@ -14,4 +16,4 @@ target_include_directories(lib_common_flap
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-target_link_libraries(lib_common_flap mbed-os)
+target_link_libraries(lib_common_flap)

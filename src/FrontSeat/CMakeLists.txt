@@ -10,4 +10,4 @@ target_include_directories(front
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-target_link_libraries(front lib_common_flap)
+target_link_libraries(front lib_common_flap_mbed)
