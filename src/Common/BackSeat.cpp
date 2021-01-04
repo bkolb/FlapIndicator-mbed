@@ -9,9 +9,8 @@ BackSeat::BackSeat(AbstractFlapPosReader* reader, AbstractFlapIndicator* indicat
 
 void BackSeat::run() {
     flapState_t newState = reader->currentState();
-    if(currentState!=newState) {
-        currentState = newState;
-        comm->sendState(currentState);
-        indicator->updateState(currentState);
-    }
+    
+    currentState = newState;
+    comm->sendState(currentState);
+    indicator->updateState(currentState);
 }

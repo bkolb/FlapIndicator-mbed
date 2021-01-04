@@ -1,5 +1,7 @@
 #include "AbstractStateExchange.h"
 
+#include <cstdint>
+
 static auto b2c(bool b) {
     return b==true?'T':'F';
 }
@@ -9,23 +11,32 @@ static auto c2b(char c) {
 }
 
 Msg AbstractStateExchange::convertToString(flapState_t state) {
-    msgBuffer[0] = 'L';
-    msgBuffer[1] = 'E';
-    msgBuffer[2] = 'D';
-    msgBuffer[2] = b2c(state.led1);
-    msgBuffer[2] = b2c(state.led2);
-    msgBuffer[2] = b2c(state.led3);
-    msgBuffer[2] = b2c(state.led4);
-    msgBuffer[2] = b2c(state.led5);
-    msgBuffer[2] = b2c(state.ledL);
-    msgBuffer[2] = '~';
-    msgBuffer[2] = '-';
-    msgBuffer[2] = '~';
-    msgBuffer[2] = 0;
+    uint8_t ctr = 0;
+
+    msgBuffer[ctr++] = '1';
+    msgBuffer[ctr++] = b2c(state.led1);
+
+    msgBuffer[ctr++] = '2';
+    msgBuffer[ctr++] = b2c(state.led2);
+
+    msgBuffer[ctr++] = '3';
+    msgBuffer[ctr++] = b2c(state.led3);
+
+    msgBuffer[ctr++] = '4';
+    msgBuffer[ctr++] = b2c(state.led4);
+
+    msgBuffer[ctr++] = '5';
+    msgBuffer[ctr++] = b2c(state.led5);
+
+    msgBuffer[ctr++] = 'L';
+    msgBuffer[ctr++] = b2c(state.ledL);
+    
+    msgBuffer[ctr++] = '\n';
+    msgBuffer[ctr++] = 0;
     
     Msg msg {
         .msgBuffer = &msgBuffer[0],
-        .size = 13
+        .size = ctr
     };
 
     return msg;
