@@ -108,17 +108,17 @@ clean:
 	rm -rf $(CMAKE_DIR)/config
 
 flashFront:
-	openocd -f interface/stlink.cfg -c 'transport select hla_swd' -f target/stm32l4x.cfg -c 'program $(BIN_PATH_FRONT) 0x08000000' -c exit
+	openocd -f openocd.cfg -c 'program $(BIN_PATH_FRONT) 0x08000000' -c exit
 	sleep 1
 	@$(MAKE) reset
 
 flashBack:
-	openocd -f interface/stlink.cfg -c 'transport select hla_swd' -f target/stm32l4x.cfg -c 'program $(BIN_PATH_BACK) 0x08000000' -c exit
+	openocd -f openocd.cfg -c 'program $(BIN_PATH_BACK) 0x08000000' -c exit
 	sleep 1
 	@$(MAKE) reset
 
 reset:
-	openocd -f interface/stlink.cfg -c 'transport select hla_swd' -f target/stm32l4x.cfg -c init -c 'reset run' -c exit
+	openocd -f openocd.cfg -c init -c 'reset run' -c exit
 
 term:
 	mbed sterm -b $(BAUDRATE) -p $(PORT)
