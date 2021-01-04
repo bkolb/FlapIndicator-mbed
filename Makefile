@@ -114,8 +114,8 @@ flashFront:
 
 flashBack:
 	openocd -f openocd.cfg -c 'program $(BIN_PATH_BACK) 0x08000000' -c exit
-	sleep 1
-	@$(MAKE) reset
+	sleep 2
+	#@$(MAKE) reset
 
 reset:
 	openocd -f openocd.cfg -c init -c 'reset run' -c exit

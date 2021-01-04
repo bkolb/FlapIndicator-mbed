@@ -8,7 +8,6 @@ target_sources(lib_common_flap
   PRIVATE
     AbstractFlapPosReader.cpp
     AbstractStateExchange.cpp
-    BackSeat.cpp
 )
 
 target_include_directories(lib_common_flap

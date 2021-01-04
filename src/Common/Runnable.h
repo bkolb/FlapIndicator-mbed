@@ -1,6 +1,6 @@
 #pragma once
 
-class Task {
+class Runnable {
 
     public:
         virtual void run() = 0;

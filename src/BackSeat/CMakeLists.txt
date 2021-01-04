@@ -3,6 +3,9 @@ add_mbed_executable(back)
 target_sources(back
   PRIVATE
     main.cpp
+    BackSeatVarioHandler.cpp
+    BackSeat.cpp
+    
 )
 
 target_include_directories(back
@@ -10,4 +13,4 @@ target_include_directories(back
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-target_link_libraries(back lib_common_flap_mbed)
+target_link_libraries(back lib_common_flap lib_common_flap_mbed)

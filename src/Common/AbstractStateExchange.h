@@ -21,4 +21,5 @@ class AbstractStateExchange {
 
     public:
         void sendState(flapState_t state);
+        void sendVarioBtnPressed();
 };

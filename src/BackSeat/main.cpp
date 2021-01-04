@@ -6,6 +6,7 @@
 #include "DIOFlapIndicator.h"
 #include "UARTStateExchange.h"
 
+#include "BackSeatVarioHandler.h"
 #include "BackSeat.h"
 
 
@@ -22,7 +23,9 @@ ADCFlapPosReader reader(A0);
 DIOFlapIndicator indicator(&leds);
 UARTStateExchange comm(SERIAL_TX,SERIAL_RX);
 
-BackSeat bs(&reader, &indicator, &comm);
+BackSeatVarioHandler vario(&comm, A3);
+
+BackSeat bs(&reader, &indicator, &comm, &vario);
 
 // main() runs in its own thread in the OS
 int main()
