@@ -107,18 +107,11 @@ clean:
 	rm -rf $(BUILD_DIR)
 	rm -rf $(CMAKE_DIR)/config
 
-flashFront:
-	openocd -f openocd.cfg -c 'program $(BIN_PATH_FRONT) 0x08000000' -c exit
-	sleep 1
-	@$(MAKE) reset
+flashFront: all
+	openocd -f openocd.cfg -c 'program $(BIN_PATH_FRONT) 0x08000000' -c 'sleep 200' -c 'reset run' -c 'exit'
 
-flashBack:
-	openocd -f openocd.cfg -c 'program $(BIN_PATH_BACK) 0x08000000' -c exit
-	sleep 2
-	#@$(MAKE) reset
-
-reset:
-	openocd -f openocd.cfg -c init -c 'reset run' -c exit
+flashBack: all
+	openocd -f openocd.cfg -c 'program $(BIN_PATH_BACK) 0x08000000' -c 'sleep 200' -c 'reset run' -c 'exit'
 
 term:
 	mbed sterm -b $(BAUDRATE) -p $(PORT)

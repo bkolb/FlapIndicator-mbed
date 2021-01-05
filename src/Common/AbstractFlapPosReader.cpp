@@ -39,6 +39,11 @@ auto AbstractFlapPosReader::rawToState(uint16_t rawVal) const {
 }
 
 flapState_t AbstractFlapPosReader::currentState() const {
-    uint16_t raw = readRawVal();
+    constexpr uint8_t numInt = 5;
+    uint32_t integrated = readRawVal();
+    for (uint8_t i = 0; i < numInt-1; i++) {
+        integrated += readRawVal();
+    }
+    uint16_t raw = integrated / numInt;
     return rawToState(raw);
 }

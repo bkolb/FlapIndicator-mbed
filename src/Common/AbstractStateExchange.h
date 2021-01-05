@@ -4,7 +4,7 @@
 #include <cstddef>
 
 
-#define BUFFER_SIZE 16
+#define BUFFER_SIZE 32
 
 struct Msg {
     char* msgBuffer;
@@ -16,10 +16,11 @@ class AbstractStateExchange {
     char msgBuffer[BUFFER_SIZE];
 
     protected:
-        virtual auto sendString(Msg msg) -> void = 0;
         Msg convertToString(flapState_t state);
 
     public:
+        virtual auto sendString(Msg msg) -> void = 0;
+
         void sendState(flapState_t state);
         void sendVarioBtnPressed();
 };

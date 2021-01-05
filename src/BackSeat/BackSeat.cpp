@@ -6,13 +6,12 @@ BackSeat::BackSeat(AbstractFlapPosReader* reader, AbstractFlapIndicator* indicat
     indicator(indicator),
     comm(comm),
     vario(vario) {
-    
 }
 
 void BackSeat::run() {
     flapState_t newState = reader->currentState();
-    
     currentState = newState;
     comm->sendState(currentState);
     indicator->updateState(currentState);
+    vario->run();
 }

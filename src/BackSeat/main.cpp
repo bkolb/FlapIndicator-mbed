@@ -19,19 +19,19 @@ LedMapping leds {
         .ledL = DigitalOut(D3)
     };
 
-ADCFlapPosReader reader(A0);
-DIOFlapIndicator indicator(&leds);
-UARTStateExchange comm(SERIAL_TX,SERIAL_RX);
+ADCFlapPosReader reader = ADCFlapPosReader(A0);
+DIOFlapIndicator indicator = DIOFlapIndicator(&leds);
+UARTStateExchange comm = UARTStateExchange(SERIAL_TX,SERIAL_RX);
 
-BackSeatVarioHandler vario(&comm, A3);
+BackSeatVarioHandler vario= BackSeatVarioHandler(&comm, A3);
 
-BackSeat bs(&reader, &indicator, &comm, &vario);
+BackSeat bs = BackSeat(&reader, &indicator, &comm, &vario);
 
 // main() runs in its own thread in the OS
 int main()
 {
     while (true) {
-        bs.run();    
+        bs.run();
         ThisThread::sleep_for(500ms);
     }
 }
