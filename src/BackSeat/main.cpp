@@ -11,17 +11,17 @@
 
 
 LedMapping leds {
-        .led1 = DigitalOut(D10),
-        .led2 = DigitalOut(D9),
-        .led3 = DigitalOut(D6),
-        .led4 = DigitalOut(D5),
-        .led5 = DigitalOut(D4),
-        .ledL = DigitalOut(D3)
-    };
+    .led1 = DigitalOut(D10),
+    .led2 = DigitalOut(D9),
+    .led3 = DigitalOut(D6),
+    .led4 = DigitalOut(D5),
+    .led5 = DigitalOut(D4),
+    .ledL = DigitalOut(D3)
+};
 
 ADCFlapPosReader reader = ADCFlapPosReader(A0);
 DIOFlapIndicator indicator = DIOFlapIndicator(&leds);
-UARTStateExchange comm = UARTStateExchange(SERIAL_TX,SERIAL_RX);
+UARTStateSender comm = UARTStateSender(SERIAL_TX,SERIAL_RX);
 
 BackSeatVarioHandler vario= BackSeatVarioHandler(&comm, A3);
 

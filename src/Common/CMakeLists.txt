@@ -8,6 +8,9 @@ target_sources(lib_common_flap
   PRIVATE
     AbstractFlapPosReader.cpp
     AbstractStateExchange.cpp
+    cmd/AbstractCmd.cpp
+    cmd/LedCmd.cpp
+    cmd/VarioCmd.cpp
 )
 
 target_include_directories(lib_common_flap

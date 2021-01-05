@@ -8,8 +8,3 @@ struct flapState_t {
     bool led5;
     bool ledL;
 };
-
-struct systemState_t {
-    flapState_t flapState;
-    bool forceVario;
-};

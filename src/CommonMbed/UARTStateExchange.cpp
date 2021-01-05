@@ -1,14 +1,11 @@
 #include "UARTStateExchange.h"
 
 
-
-void UARTStateExchange::sendString(Msg msg) {
-    uart->write(msg.msgBuffer,msg.size);
-    //printf(msg.msgBuffer);
- //   printf(" size: %u", msg.size);
+void UARTStateSender::sendCmd(Msg* msg) {
+    uart->write(msg->msgBuffer,msg->size);
 }
 
-UARTStateExchange::UARTStateExchange(PinName tx, PinName rx) : 
+UARTStateSender::UARTStateSender(PinName tx, PinName rx) : 
     uart(new mbed::BufferedSerial(tx, rx)){
     uart->set_baud(9600);
     uart->set_format(
@@ -18,6 +15,6 @@ UARTStateExchange::UARTStateExchange(PinName tx, PinName rx) :
     );
 }
 
-UARTStateExchange::~UARTStateExchange(){
+UARTStateSender::~UARTStateSender(){
     delete uart;
 }

@@ -5,12 +5,12 @@
 #include "BufferedSerial.h"
 #include "PinNames.h"
 
-class UARTStateExchange : public AbstractStateExchange {
+class UARTStateSender : public AbstractCmdSender {
     mbed::BufferedSerial* uart;
 
     public:
-        UARTStateExchange(PinName tx, PinName rx);
-        ~UARTStateExchange();
+        UARTStateSender(PinName tx, PinName rx);
+        ~UARTStateSender();
 
-        void sendString(Msg msg) override;
+        virtual void sendCmd(Msg* msg) override;
 };

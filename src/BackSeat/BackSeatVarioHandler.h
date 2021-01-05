@@ -8,13 +8,13 @@
 
 class BackSeatVarioHandler: public AbstractVarioHandler {
 
-    AbstractStateExchange* comm;
+    AbstractCmdSender* comm;
     mbed::InterruptIn* varioBtn;
 
     bool btnPressedAndNotTransmitted;
 
     public:
-        BackSeatVarioHandler(AbstractStateExchange* comm, PinName varioButtonPin);
+        BackSeatVarioHandler(AbstractCmdSender* comm, PinName varioButtonPin);
         ~BackSeatVarioHandler();
 
         void handleVarioButtonPressed() override;

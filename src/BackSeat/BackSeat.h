@@ -15,11 +15,11 @@ class BackSeat: public Runnable {
     
     AbstractFlapPosReader* reader;
     AbstractFlapIndicator* indicator;
-    AbstractStateExchange* comm;
+    AbstractCmdSender* comm;
     AbstractVarioHandler* vario;
 
     public:
-        BackSeat(AbstractFlapPosReader* reader, AbstractFlapIndicator* indicator, AbstractStateExchange* comm, AbstractVarioHandler* vario);
+        BackSeat(AbstractFlapPosReader* reader, AbstractFlapIndicator* indicator, AbstractCmdSender* comm, AbstractVarioHandler* vario);
 
          void run() override;
 

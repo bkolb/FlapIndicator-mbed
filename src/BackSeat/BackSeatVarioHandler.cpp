@@ -3,7 +3,9 @@
 #include "InterruptIn.h"
 #include "Callback.h"
 
-BackSeatVarioHandler::BackSeatVarioHandler(AbstractStateExchange* comm, PinName varioButtonPin): 
+#include "cmd/VarioCmd.h"
+
+BackSeatVarioHandler::BackSeatVarioHandler(AbstractCmdSender* comm, PinName varioButtonPin): 
     AbstractVarioHandler(), 
     comm(comm)
     {
@@ -18,7 +20,10 @@ BackSeatVarioHandler::~BackSeatVarioHandler(){
 
 void BackSeatVarioHandler::run() {
     if(this->btnPressedAndNotTransmitted) {
-        comm->sendVarioBtnPressed();
+
+        VarioCmd vario;
+        comm->sendCmd(&vario);
+        
         this->btnPressedAndNotTransmitted=false;
     }
 }

@@ -1,26 +1,57 @@
 #pragma once
 
 #include "StateTypes.h"
-#include <cstddef>
 
+#include "Msg.h"
+
+#include "cmd/AbstractCmd.h"
+#include <cstddef>
+#include <cstdint>
+
+
+
+#define CMD_SIZE 8
 
 #define BUFFER_SIZE 32
 
-struct Msg {
-    char* msgBuffer;
-    std::size_t size;
-};
-
-class AbstractStateExchange {
-
-    char msgBuffer[BUFFER_SIZE];
+class AbstractCmdSender {
 
     protected:
-        Msg convertToString(flapState_t state);
+        Msg msg;
+        virtual void sendCmd(Msg* msg) = 0;
 
     public:
-        virtual auto sendString(Msg msg) -> void = 0;
+        AbstractCmdSender() {
+            char* msgBuffer = new char[BUFFER_SIZE];
+            msg.msgBuffer = msgBuffer;
+        }
 
-        void sendState(flapState_t state);
-        void sendVarioBtnPressed();
+        ~AbstractCmdSender(){
+            delete msg.msgBuffer;
+        }
+
+        void registerCmd(AbstractCmd* cmd);
+        
+        void sendCmd(AbstractCmd* cmd);
+};
+
+class AbstractCmdReceiver {
+    
+    AbstractCmd* cmds[CMD_SIZE];
+    uint8_t cmdSize = 0;
+
+    protected:
+        Msg msg;
+
+    public:
+        AbstractCmdReceiver() {
+            char* msgBuffer = new char[BUFFER_SIZE];
+            msg.msgBuffer = msgBuffer;
+        }
+
+        ~AbstractCmdReceiver(){
+            delete msg.msgBuffer;
+        }
+
+        void registerCmd(AbstractCmd* cmd);
 };
