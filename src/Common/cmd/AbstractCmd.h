@@ -2,15 +2,16 @@
 
 #include "../Msg.h"
 
-#define EndOfCommand '\n'
+#define BeginOfCommand '\n'
+#define EndOfCommand 0
 
 #define LED_CMD_ID 'L'
 #define VARIO_CMD_ID 'V'
 
 #define CHECK(CHAR) \
     { \
-        char c = msg->msgBuffer[msg->size++];\
-        if(c == 0 || c != (CHAR)) {\
+        char c = msg->msgBuffer[msg->pos++];\
+        if(c != (CHAR)) {\
             return false; \
         } \
     } \

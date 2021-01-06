@@ -6,7 +6,7 @@
 
 
 #define ASSIGN(CHAR) \
-    state.led##CHAR = c2b(msg->msgBuffer[msg->size++]); \
+    state.led##CHAR = c2b(msg->msgBuffer[msg->pos++]); \
 
 static auto b2c(bool b) {
     return b==true?'T':'F';
@@ -21,23 +21,23 @@ char LedCmd::cmdID(){
 }
         
 void LedCmd::toMsgInternal(Msg* msg) {
-    msg->msgBuffer[msg->size++] = '1';
-    msg->msgBuffer[msg->size++] = b2c(state.led1);
+    msg->msgBuffer[msg->pos++] = '1';
+    msg->msgBuffer[msg->pos++] = b2c(state.led1);
 
-    msg->msgBuffer[msg->size++] = '2';
-    msg->msgBuffer[msg->size++] = b2c(state.led2);
+    msg->msgBuffer[msg->pos++] = '2';
+    msg->msgBuffer[msg->pos++] = b2c(state.led2);
 
-    msg->msgBuffer[msg->size++] = '3';
-    msg->msgBuffer[msg->size++] = b2c(state.led3);
+    msg->msgBuffer[msg->pos++] = '3';
+    msg->msgBuffer[msg->pos++] = b2c(state.led3);
 
-    msg->msgBuffer[msg->size++] = '4';
-    msg->msgBuffer[msg->size++] = b2c(state.led4);
+    msg->msgBuffer[msg->pos++] = '4';
+    msg->msgBuffer[msg->pos++] = b2c(state.led4);
 
-    msg->msgBuffer[msg->size++] = '5';
-    msg->msgBuffer[msg->size++] = b2c(state.led5);
+    msg->msgBuffer[msg->pos++] = '5';
+    msg->msgBuffer[msg->pos++] = b2c(state.led5);
 
-    msg->msgBuffer[msg->size++] = 'L';
-    msg->msgBuffer[msg->size++] = b2c(state.ledL);   
+    msg->msgBuffer[msg->pos++] = 'L';
+    msg->msgBuffer[msg->pos++] = b2c(state.ledL);   
 }
 
 bool LedCmdParser::parseMsgInternal(Msg* msg) { 
@@ -64,7 +64,10 @@ bool LedCmdParser::parseMsgInternal(Msg* msg) {
     return true;
 };
 
+
+
 void LedCmdParser::handleMsgInternal() {
+    vario->updateVario(state);
     flapIndicator->updateState(state);
 }
 

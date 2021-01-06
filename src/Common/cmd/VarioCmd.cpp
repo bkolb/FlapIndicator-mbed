@@ -3,7 +3,8 @@
 #include "VarioCmd.h"
 
 #include "../StateTypes.h"
-       
+#include <cstdio>
+
 void VarioCmd::toMsgInternal(Msg* msg) {
 }
 
@@ -16,7 +17,7 @@ bool VarioCmdParser::parseMsgInternal(Msg* msg) {
 };
 
 void VarioCmdParser::handleMsgInternal() {
-    // TODO
+    vario->toggleVario();
 }
 
 char VarioCmdParser::cmdID(){

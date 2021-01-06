@@ -21,7 +21,7 @@ LedMapping leds {
 
 ADCFlapPosReader reader = ADCFlapPosReader(A0);
 DIOFlapIndicator indicator = DIOFlapIndicator(&leds);
-UARTStateSender comm = UARTStateSender(SERIAL_TX,SERIAL_RX);
+UARTStateSender comm = UARTStateSender(PA_2);
 
 BackSeatVarioHandler vario= BackSeatVarioHandler(&comm, A3);
 
@@ -34,5 +34,7 @@ int main()
         bs.run();
         ThisThread::sleep_for(500ms);
     }
+
+    return 0;
 }
 

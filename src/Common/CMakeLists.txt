@@ -8,6 +8,7 @@ target_sources(lib_common_flap
   PRIVATE
     AbstractFlapPosReader.cpp
     AbstractStateExchange.cpp
+    AbstractVarioOut.cpp
     cmd/AbstractCmd.cpp
     cmd/LedCmd.cpp
     cmd/VarioCmd.cpp

@@ -2,6 +2,7 @@
 
 #include "AbstractCmd.h"
 #include "../AbstractFlapIndicator.h"
+#include "../AbstractVarioOut.h"
 
 #include "../Msg.h"
 
@@ -18,7 +19,11 @@ class VarioCmd : public AbstractCmd {
 
 class VarioCmdParser : public AbstractCmdParser {
 
+    AbstractVarioOut* vario;
+    
     public:
+        VarioCmdParser(AbstractVarioOut* vario): vario(vario){}
+
         char cmdID() override;
         
         virtual bool parseMsgInternal(Msg* msg) override;

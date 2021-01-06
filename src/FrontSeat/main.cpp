@@ -4,46 +4,47 @@
 
 #include "mbed.h"
 
+
 #include "DIOFlapIndicator.h"
 #include "UARTStateExchange.h"
 
+#include "VarioOut.h"
+
+#include "cmd/LedCmd.h"
+#include "cmd/VarioCmd.h"
+
 LedMapping leds {
-    .led1 = DigitalOut(D10),
-    .led2 = DigitalOut(D9),
-    .led3 = DigitalOut(D6),
-    .led4 = DigitalOut(D5),
-    .led5 = DigitalOut(D4),
-    .ledL = DigitalOut(D3)
+    .led1 = mbed::DigitalOut(D10),
+    .led2 = mbed::DigitalOut(D9),
+    .led3 = mbed::DigitalOut(D6),
+    .led4 = mbed::DigitalOut(D5),
+    .led5 = mbed::DigitalOut(D4),
+    .ledL = mbed::DigitalOut(D3)
 };
 
-DIOFlapIndicator indicator = DIOFlapIndicator(&leds);
-//UARTStateExchange comm = UARTStateExchange(SERIAL_TX,SERIAL_RX);
+//TODO change
+mbed::DigitalOut varioPin(LED1);
 
-static BufferedSerial serial_port(USBTX, USBRX);
+VarioOut vario(&varioPin);
 
-#define MAXIMUM_BUFFER_SIZE                                                  32
+DIOFlapIndicator indicator(&leds);
+UARTStateReceiver comm(PA_10);
 
-int main(void)
-{
-	// Set desired properties (9600-8-N-1).
-    serial_port.set_baud(9600);
-    serial_port.set_format(
-        /* bits */ 8,
-        /* parity */ BufferedSerial::None,
-        /* stop bit */ 1
-    );
+LedCmdParser ledParser(&indicator, &vario);
+VarioCmdParser varioParser(&vario);
 
-	// Application buffer to receive the data
-    char buf[MAXIMUM_BUFFER_SIZE] = {0};
+rtos::Thread thread;
 
-//	hello.start();
+int  main(void) {
+    comm.registerCmd(&ledParser);
+    comm.registerCmd(&varioParser);
 
-	while (true) {
-		if (uint32_t num = serial_port.read(buf, sizeof(buf))) {
-            // Toggle the LED.
-            //led = !led;
-        }
-	}
+    thread.start(mbed::callback(&comm, &Runnable::run));
 
-	return 0;
+    while (true)
+    {
+        ThisThread::sleep_for(500ms);
+    }
+
+    return 0;
 }

@@ -2,6 +2,7 @@
 
 #include "AbstractCmd.h"
 #include "../AbstractFlapIndicator.h"
+#include "../AbstractVarioOut.h"
 
 #include "../Msg.h"
 
@@ -24,9 +25,10 @@ class LedCmdParser : public AbstractCmdParser {
 
     flapState_t state;
     AbstractFlapIndicator* flapIndicator;
+    AbstractVarioOut* vario;
 
     public:
-        LedCmdParser(AbstractFlapIndicator* flapIndicator): flapIndicator(flapIndicator){};
+        LedCmdParser(AbstractFlapIndicator* flapIndicator, AbstractVarioOut* vario): flapIndicator(flapIndicator), vario(vario){};
         char cmdID() override;
         
         virtual bool parseMsgInternal(Msg* msg) override;
