@@ -67,8 +67,8 @@ bool LedCmdParser::parseMsgInternal(Msg* msg) {
 
 
 void LedCmdParser::handleMsgInternal() {
-    vario->updateVario(state);
-    flapIndicator->updateState(state);
+    vario.updateVario(state);
+    flapIndicator.updateState(state);
 }
 
 char LedCmdParser::cmdID(){

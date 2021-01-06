@@ -22,10 +22,7 @@ class AbstractCmdSender {
         virtual void sendCmd(Msg* msg) = 0;
 
     public:
-
-        void registerCmd(AbstractCmd* cmd);
-        
-        void sendCmd(AbstractCmd* cmd);
+        void sendCmd(AbstractCmd& cmd);
 };
 
 class AbstractCmdReceiver {

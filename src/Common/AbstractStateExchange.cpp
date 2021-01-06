@@ -9,8 +9,8 @@ void AbstractCmdReceiver::registerCmd(AbstractCmdParser* cmd) {
     }
 }
         
-void AbstractCmdSender::sendCmd(AbstractCmd* cmd) {
+void AbstractCmdSender::sendCmd(AbstractCmd& cmd) {
     Msg msg;
-    cmd->toMsg(&msg);
+    cmd.toMsg(&msg);
     sendCmd(&msg);
 }

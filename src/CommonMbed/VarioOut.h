@@ -6,16 +6,16 @@
 
 class VarioOut : public AbstractVarioOut {
 
-    DigitalOut* out;
+    DigitalOut& out;
 
     public:
-        VarioOut(DigitalOut* out):out(out){}
+        VarioOut(DigitalOut& out):out(out){}
 
         bool isVario() override {
-            return out->read();
+            return out.read();
         };
 
         virtual void setVario(bool v) override {
-            out->write(v);
+            out.write(v);
         }
 };

@@ -5,7 +5,7 @@
 
 #include "cmd/VarioCmd.h"
 
-BackSeatVarioHandler::BackSeatVarioHandler(AbstractCmdSender* comm, PinName varioButtonPin): 
+BackSeatVarioHandler::BackSeatVarioHandler(AbstractCmdSender& comm, PinName varioButtonPin): 
     AbstractVarioHandler(), 
     comm(comm)
     {
@@ -22,7 +22,7 @@ void BackSeatVarioHandler::run() {
     if(this->btnPressedAndNotTransmitted) {
 
         VarioCmd vario;
-        comm->sendCmd(&vario);
+        comm.sendCmd(vario);
         
         this->btnPressedAndNotTransmitted=false;
     }

@@ -17,10 +17,10 @@ struct LedMapping {
 
 class DIOFlapIndicator : public AbstractFlapIndicator {
 
-    LedMapping* leds;
+    LedMapping& leds;
 
     public:
-        explicit DIOFlapIndicator(LedMapping* leds);
+        explicit DIOFlapIndicator(LedMapping& leds);
 
         void updateState(flapState_t newState) override;
 

@@ -2,7 +2,7 @@
 
 #include "cmd/LedCmd.h"
 
-BackSeat::BackSeat(AbstractFlapPosReader* reader, AbstractFlapIndicator* indicator, AbstractCmdSender* comm, AbstractVarioHandler* vario): 
+BackSeat::BackSeat(AbstractFlapPosReader& reader, AbstractFlapIndicator& indicator, AbstractCmdSender& comm, AbstractVarioHandler& vario): 
     Runnable(), 
     reader(reader),
     indicator(indicator),
@@ -11,13 +11,13 @@ BackSeat::BackSeat(AbstractFlapPosReader* reader, AbstractFlapIndicator* indicat
 }
 
 void BackSeat::run() {
-    flapState_t newState = reader->currentState();
+    flapState_t newState = reader.currentState();
     currentState = newState;
 
-    indicator->updateState(currentState);
+    indicator.updateState(currentState);
 
     LedCmd led(newState);
-    comm->sendCmd(&led);
+    comm.sendCmd(led);
 
-    vario->run();
+    vario.run();
 }

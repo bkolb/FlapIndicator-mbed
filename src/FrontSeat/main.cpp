@@ -25,13 +25,13 @@ LedMapping leds {
 //TODO change
 mbed::DigitalOut varioPin(LED1);
 
-VarioOut vario(&varioPin);
+VarioOut vario(varioPin);
 
-DIOFlapIndicator indicator(&leds);
+DIOFlapIndicator indicator(leds);
 UARTStateReceiver comm(PA_10);
 
-LedCmdParser ledParser(&indicator, &vario);
-VarioCmdParser varioParser(&vario);
+LedCmdParser ledParser(indicator, vario);
+VarioCmdParser varioParser(vario);
 
 rtos::Thread thread;
 

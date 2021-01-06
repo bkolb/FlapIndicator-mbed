@@ -19,13 +19,13 @@ LedMapping leds {
     .ledL = DigitalOut(D3)
 };
 
-ADCFlapPosReader reader = ADCFlapPosReader(A0);
-DIOFlapIndicator indicator = DIOFlapIndicator(&leds);
-UARTStateSender comm = UARTStateSender(PA_2);
+ADCFlapPosReader reader(A0);
+DIOFlapIndicator indicator(leds);
+UARTStateSender comm (PA_2);
 
-BackSeatVarioHandler vario= BackSeatVarioHandler(&comm, A3);
+BackSeatVarioHandler vario(comm, A3);
 
-BackSeat bs = BackSeat(&reader, &indicator, &comm, &vario);
+BackSeat bs(reader, indicator, comm, vario);
 
 // main() runs in its own thread in the OS
 int main()

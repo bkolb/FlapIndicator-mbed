@@ -17,7 +17,7 @@ bool VarioCmdParser::parseMsgInternal(Msg* msg) {
 };
 
 void VarioCmdParser::handleMsgInternal() {
-    vario->toggleVario();
+    vario.toggleVario();
 }
 
 char VarioCmdParser::cmdID(){

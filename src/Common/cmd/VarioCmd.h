@@ -19,10 +19,10 @@ class VarioCmd : public AbstractCmd {
 
 class VarioCmdParser : public AbstractCmdParser {
 
-    AbstractVarioOut* vario;
+    AbstractVarioOut& vario;
     
     public:
-        VarioCmdParser(AbstractVarioOut* vario): vario(vario){}
+        VarioCmdParser(AbstractVarioOut& vario): vario(vario){}
 
         char cmdID() override;
         

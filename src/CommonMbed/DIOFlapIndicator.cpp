@@ -2,11 +2,11 @@
 
 
 #define WRITE_LED(LED) \
-    leds->LED.write(static_cast<int>(newState.LED))
+    leds.LED.write(static_cast<int>(newState.LED))
 
 
 
-DIOFlapIndicator::DIOFlapIndicator(LedMapping* leds):
+DIOFlapIndicator::DIOFlapIndicator(LedMapping& leds):
     AbstractFlapIndicator(),
     leds(leds) 
 {}
