@@ -1,14 +1,12 @@
 #pragma once
 
+#include "Runnable.h"
 #include "StateTypes.h"
 
-#include "Runnable.h"
+class AbstractVarioHandler : public Runnable
+{
+  public:
+	virtual void handleVarioButtonPressed() = 0;
 
-class AbstractVarioHandler: public Runnable {
-
-    public:
-        virtual void handleVarioButtonPressed() = 0;
-
-        void run() override;
-
+	void run() override;
 };

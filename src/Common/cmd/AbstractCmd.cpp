@@ -1,30 +1,31 @@
 #include "AbstractCmd.h"
-
 #include <cstdio>
 
-void AbstractCmd::toMsg(Msg* msg) {
-    msg->pos=0;
-    msg->msgBuffer[msg->pos++] = BeginOfCommand;
-    msg->msgBuffer[msg->pos++] = cmdID();
+void AbstractCmd::toMsg(Msg *msg)
+{
+	msg->pos				   = 0;
+	msg->msgBuffer[msg->pos++] = BeginOfCommand;
+	msg->msgBuffer[msg->pos++] = cmdID();
 
-    this->toMsgInternal(msg);
+	this->toMsgInternal(msg);
 
-    msg->msgBuffer[msg->pos++] = EndOfCommand;
-    msg->msgBuffer[msg->pos++] = 0;
+	msg->msgBuffer[msg->pos++] = EndOfCommand;
+	msg->msgBuffer[msg->pos++] = 0;
 }
 
-bool AbstractCmdParser::parseAndHandleMsg(Msg* msg) {
-    // in case the message was processed before, we reset the position to the beginning
-    msg->pos=0;
+bool AbstractCmdParser::parseAndHandleMsg(Msg *msg)
+{
+	// in case the message was processed before, we reset the position to the beginning
+	msg->pos = 0;
 
-    CHECK(BeginOfCommand)
-    CHECK(cmdID());
+	CHECK(BeginOfCommand)
+	CHECK(cmdID());
 
-    parseMsgInternal(msg);
+	parseMsgInternal(msg);
 
-    CHECK(EndOfCommand)
+	CHECK(EndOfCommand)
 
-    handleMsgInternal();
+	handleMsgInternal();
 
-    return true;
+	return true;
 }

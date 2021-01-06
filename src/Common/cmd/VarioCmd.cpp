@@ -1,25 +1,28 @@
 
 
 #include "VarioCmd.h"
-
-#include "../StateTypes.h"
 #include <cstdio>
 
-void VarioCmd::toMsgInternal(Msg* msg) {
+#include "../StateTypes.h"
+
+void VarioCmd::toMsgInternal(Msg *msg) {}
+
+char VarioCmd::cmdID()
+{
+	return VARIO_CMD_ID;
 }
 
-char VarioCmd::cmdID(){
-    return VARIO_CMD_ID;
-}
-
-bool VarioCmdParser::parseMsgInternal(Msg* msg) { 
-    return true;
+bool VarioCmdParser::parseMsgInternal(Msg *msg)
+{
+	return true;
 };
 
-void VarioCmdParser::handleMsgInternal() {
-    vario.toggleVario();
+void VarioCmdParser::handleMsgInternal()
+{
+	vario.toggleVario();
 }
 
-char VarioCmdParser::cmdID(){
-    return VARIO_CMD_ID;
+char VarioCmdParser::cmdID()
+{
+	return VARIO_CMD_ID;
 }

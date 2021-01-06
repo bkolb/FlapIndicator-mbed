@@ -1,21 +1,16 @@
 #pragma once
 
+#include "AbstractVarioOut.h"
 #include "DigitalOut.h"
 
-#include "AbstractVarioOut.h"
+class VarioOut : public AbstractVarioOut
+{
+	DigitalOut &out;
 
-class VarioOut : public AbstractVarioOut {
+  public:
+	VarioOut(DigitalOut &out) : out(out) {}
 
-    DigitalOut& out;
+	bool isVario() override { return out.read(); };
 
-    public:
-        VarioOut(DigitalOut& out):out(out){}
-
-        bool isVario() override {
-            return out.read();
-        };
-
-        virtual void setVario(bool v) override {
-            out.write(v);
-        }
+	virtual void setVario(bool v) override { out.write(v); }
 };

@@ -3,41 +3,39 @@
 #include "../Msg.h"
 
 #define BeginOfCommand '\n'
-#define EndOfCommand 0
+#define EndOfCommand   0
 
-#define LED_CMD_ID 'L'
+#define LED_CMD_ID	 'L'
 #define VARIO_CMD_ID 'V'
 
-#define CHECK(CHAR) \
-    { \
-        char c = msg->msgBuffer[msg->pos++];\
-        if(c != (CHAR)) {\
-            return false; \
-        } \
-    } \
+#define CHECK(CHAR)                                                                                                    \
+	{                                                                                                                  \
+		char c = msg->msgBuffer[msg->pos++];                                                                           \
+		if (c != (CHAR)) {                                                                                             \
+			return false;                                                                                              \
+		}                                                                                                              \
+	}
 
+class AbstractCmd
+{
+  public:
+	virtual char cmdID() = 0;
 
-class AbstractCmd {
+	void toMsg(Msg *msg);
 
-    public:
-        virtual char cmdID() = 0;
-
-        void toMsg(Msg* msg);
-
-    protected:
-        virtual void toMsgInternal(Msg* msg) = 0;
-    
+  protected:
+	virtual void toMsgInternal(Msg *msg) = 0;
 };
 
-class AbstractCmdParser {
+class AbstractCmdParser
+{
+  public:
+	virtual char cmdID() = 0;
 
-    public:
-        virtual char cmdID() = 0;
+	bool parseAndHandleMsg(Msg *msg);
 
-        bool parseAndHandleMsg(Msg* msg);
+  protected:
+	virtual bool parseMsgInternal(Msg *msg) = 0;
 
-    protected: 
-        virtual bool parseMsgInternal(Msg* msg) = 0;
-
-        virtual void handleMsgInternal() = 0;
+	virtual void handleMsgInternal() = 0;
 };
