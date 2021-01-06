@@ -7,6 +7,24 @@
 Template based on https://github.com/ladislas/mbed-cmake-template/
 # Flap Indicator
 
+## Software
+We use http://mbed.org/. Due to flashing issues we use version 6.5.0. Basic setup is describes in [Template-Readme](Template-Readme.md)
+
+To setup run
+```
+make config TARGET_BOARD=NUCLEO_L432KC BUILD_TYPE=Debug
+```
+then
+```
+make
+```
+to flash
+```
+make flashBack
+make flashFront
+```
+
+
 ## Hardware
 
 We use the following Board: https://os.mbed.com/platforms/ST-Nucleo-L432KC/
