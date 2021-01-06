@@ -10,7 +10,7 @@ class ADCFlapPosReader : public AbstractFlapPosReader
 	mbed::AnalogIn *input;
 
   public:
-	explicit ADCFlapPosReader(PinName adcPin);
+	explicit ADCFlapPosReader(PinName adcPin, RavVal2LedThreshold& raw2led);
 	~ADCFlapPosReader();
 
   protected:
