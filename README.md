@@ -29,6 +29,8 @@ make flashFront
 
 We use the following Board: https://os.mbed.com/platforms/ST-Nucleo-L432KC/
 
+Datasheet: https://www.st.com/resource/en/datasheet/stm32l432kc.pdf
+
 
 ### Back
 #### Pins
