@@ -3,6 +3,7 @@ add_mbed_executable(front)
 target_sources(front
   PRIVATE
     main.cpp
+    FrontSeatVarioHandler.cpp
 )
 
 target_include_directories(front

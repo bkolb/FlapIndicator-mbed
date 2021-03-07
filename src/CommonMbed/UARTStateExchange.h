@@ -33,5 +33,7 @@ class UARTStateReceiver : public AbstractCmdReceiver, public Runnable
 	UARTStateReceiver(PinName rx);
 	~UARTStateReceiver();
 
+	virtual void enqueueCmd(AbstractCmd &cmd) override;
+
 	void run() override;
 };

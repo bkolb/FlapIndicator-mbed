@@ -83,6 +83,16 @@ void UARTStateReceiver::doReceive()
 	}
 }
 
+void UARTStateReceiver::enqueueCmd(AbstractCmd &cmd) {
+	Msg *newMsg = mail_box.try_calloc();
+	if (newMsg == nullptr) {
+		// allocation failed
+		return;
+	}
+	cmd.toMsg(newMsg);
+	mail_box.put(newMsg);
+}
+
 void UARTStateReceiver::run()
 {
 	while (true) {

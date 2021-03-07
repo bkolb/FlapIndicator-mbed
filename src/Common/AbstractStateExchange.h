@@ -29,4 +29,6 @@ class AbstractCmdReceiver
 
   public:
 	void registerCmd(AbstractCmdParser *cmd);
+
+	virtual void enqueueCmd(AbstractCmd &cmd) =0;
 };
