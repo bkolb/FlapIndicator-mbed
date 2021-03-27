@@ -16,17 +16,17 @@ LedMapping leds {.led1 = DigitalOut(D10),
 				 .led5 = DigitalOut(D4),
 				 .ledL = DigitalOut(D3)};
 
-RavVal2LedThreshold raw2led {.LL_VAL	= 10000,
-					.LL_L5_VAL = 15000,
-					.L5_VAL	= 20000,
-					.L5_L4_VAL = 25000,
-					.L4_VAL	= 30000,
-					.L4_L3_VAL = 35000,
-					.L3_VAL	= 40000,
-					.L3_L2_VAL = 45000,
-					.L2_VAL	= 50000,
-					.L2_L1_VAL = 55000,
-					.L1_VAL	= 60000};				
+RavVal2LedThreshold raw2led {.LL_VAL	= 35500,
+					.LL_L5_VAL = 42700,
+					.L5_VAL	= 44400,
+					.L5_L4_VAL = 45200,
+					.L4_VAL	= 46500,
+					.L4_L3_VAL = 50500,
+					.L3_VAL	= 51500,
+					.L3_L2_VAL = 54100,
+					.L2_VAL	= 55500,
+					.L2_L1_VAL = 56200,
+					.L1_VAL	= 57200};				
 
 ADCFlapPosReader reader(A0, raw2led);
 DIOFlapIndicator indicator(leds);
@@ -41,7 +41,7 @@ int main()
 {
 	while (true) {
 		bs.run();
-		ThisThread::sleep_for(500ms);
+		ThisThread::sleep_for(250ms);
 	}
 
 	return 0;

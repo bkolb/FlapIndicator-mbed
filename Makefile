@@ -22,6 +22,7 @@ VERSION      ?= mbed-os-6.6.0
 BAUDRATE     ?= 115200
 BIN_PATH_FRONT     ?= $(BUILD_DIR)/src/FrontSeat/front.bin
 BIN_PATH_BACK     ?= $(BUILD_DIR)/src/BackSeat/back.bin
+BIN_PATH_ADCPRINT     ?= $(BUILD_DIR)/src/ADCPrint/adcprint.bin
 BUILD_TYPE   ?= Release
 TARGET_BOARD ?= NUCLEO_L432KC
 
@@ -112,6 +113,9 @@ flashFront: all
 
 flashBack: all
 	openocd -f openocd.cfg -c 'program $(BIN_PATH_BACK) 0x08000000' -c 'sleep 200' -c 'reset run' -c 'exit'
+
+flashADCPrint: all
+	openocd -f openocd.cfg -c 'program $(BIN_PATH_ADCPRINT) 0x08000000' -c 'sleep 200' -c 'reset run' -c 'exit'
 
 term:
 	mbed sterm -b $(BAUDRATE) -p $(PORT)

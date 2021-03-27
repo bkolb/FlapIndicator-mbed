@@ -23,12 +23,11 @@ class AbstractFlapPosReader
 	const RavVal2LedThreshold thresholds;
 
   protected:
-	virtual uint16_t readRawVal() const = 0;
-
 	auto rawToState(uint16_t rawVal) const;
 
   public:
 	explicit AbstractFlapPosReader(const RavVal2LedThreshold &thresholds);
+	virtual uint16_t readRawVal() const = 0;
 
 	flapState_t currentState() const;
 };

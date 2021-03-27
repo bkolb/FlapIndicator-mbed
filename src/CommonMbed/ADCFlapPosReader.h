@@ -13,6 +13,5 @@ class ADCFlapPosReader : public AbstractFlapPosReader
 	explicit ADCFlapPosReader(PinName adcPin, RavVal2LedThreshold& raw2led);
 	~ADCFlapPosReader();
 
-  protected:
 	uint16_t readRawVal() const override;
 };

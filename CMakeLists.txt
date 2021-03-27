@@ -31,6 +31,7 @@ add_subdirectory(${SRC_DIR}/Common)
 add_subdirectory(${SRC_DIR}/CommonMbed)
 add_subdirectory(${SRC_DIR}/FrontSeat)
 add_subdirectory(${SRC_DIR}/BackSeat)
+add_subdirectory(${SRC_DIR}/ADCPrint)
 
 # If you use spikes to test features, you can add them here
 # add_subdirectory(${SPIKES_DIR}/blinky)
