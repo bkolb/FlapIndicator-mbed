@@ -18,7 +18,8 @@ LedMapping leds {.led1 = mbed::DigitalOut(D10),
 				 .ledL = mbed::DigitalOut(D3)};
 
 // TODO change
-mbed::DigitalOut varioPin(LED1);
+//mbed::DigitalOut varioPin(LED1);
+mbed::DigitalOut varioPin(D11);
 
 VarioOut vario(varioPin);
 

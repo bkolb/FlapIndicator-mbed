@@ -55,4 +55,4 @@ Datasheet: https://www.st.com/resource/en/datasheet/stm32l432kc.pdf
   * D4 -> L-5
   * D3 -> L-L 
 * D0 -> UART_RX
-* ?? -> LX-Vario/SF
+* D11 -> LX-Vario/SF
