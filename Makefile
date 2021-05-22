@@ -6,6 +6,8 @@
 # MARK: - Constants
 #
 
+OPENOCD_SCRIPT_DIR ?= /usr/local/Cellar/open-ocd/HEAD-6405d35/share/openocd/scripts
+
 ROOT_DIR    := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 CMAKE_DIR   := $(ROOT_DIR)/cmake
 BUILD_DIR   := $(ROOT_DIR)/build

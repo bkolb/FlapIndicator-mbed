@@ -9,25 +9,28 @@
 #include "VarioOut.h"
 #include "cmd/LedCmd.h"
 #include "cmd/VarioCmd.h"
+#include "FrontSeatVarioHandler.h"
 
-LedMapping leds {.led1 = mbed::DigitalOut(D10),
-				 .led2 = mbed::DigitalOut(D9),
-				 .led3 = mbed::DigitalOut(D6),
-				 .led4 = mbed::DigitalOut(D5),
-				 .led5 = mbed::DigitalOut(D4),
-				 .ledL = mbed::DigitalOut(D3)};
+LedMapping leds {.led1 = mbed::DigitalOut(D3),
+				 .led2 = mbed::DigitalOut(D4),
+				 .led3 = mbed::DigitalOut(D5),
+				 .led4 = mbed::DigitalOut(D6),
+				 .led5 = mbed::DigitalOut(D9),
+				 .ledL = mbed::DigitalOut(D10)};
 
 // TODO change
-//mbed::DigitalOut varioPin(LED1);
+mbed::DigitalOut varioLedPin(D13);
 mbed::DigitalOut varioPin(D11);
 
-VarioOut vario(varioPin);
+VarioOut vario(varioPin, varioLedPin);
 
 DIOFlapIndicator indicator(leds);
 UARTStateReceiver comm(PA_10);
 
 LedCmdParser ledParser(indicator, vario);
 VarioCmdParser varioParser(vario);
+
+FrontSeatVarioHandler varioBtn(comm, A3);
 
 rtos::Thread thread;
 
@@ -39,7 +42,8 @@ int main(void)
 	thread.start(mbed::callback(&comm, &Runnable::run));
 
 	while (true) {
-		ThisThread::sleep_for(500ms);
+		varioBtn.run();
+		ThisThread::sleep_for(250ms);
 	}
 
 	return 0;

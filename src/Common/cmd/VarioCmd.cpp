@@ -5,7 +5,13 @@
 
 #include "../StateTypes.h"
 
-void VarioCmd::toMsgInternal(Msg *msg) {}
+void VarioCmd::toMsgInternal(Msg *msg) {
+	msg->msgBuffer[msg->pos++] = 'V';
+	msg->msgBuffer[msg->pos++] = 'A';
+	msg->msgBuffer[msg->pos++] = 'R';
+	msg->msgBuffer[msg->pos++] = 'I';
+	msg->msgBuffer[msg->pos++] = 'O';
+}
 
 char VarioCmd::cmdID()
 {
@@ -14,6 +20,11 @@ char VarioCmd::cmdID()
 
 bool VarioCmdParser::parseMsgInternal(Msg *msg)
 {
+	CHECK('V')
+	CHECK('A')
+	CHECK('R')
+	CHECK('I')
+	CHECK('O')
 	return true;
 };
 

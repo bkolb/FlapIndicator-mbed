@@ -10,6 +10,8 @@ BackSeatVarioHandler::BackSeatVarioHandler(AbstractCmdSender &comm, PinName vari
 	varioBtn = new mbed::InterruptIn(varioButtonPin);
 	varioBtn->mode(PullUp);
 	varioBtn->fall(mbed::callback(this, &BackSeatVarioHandler::handleVarioButtonPressed));
+	btnPressedAndNotTransmitted = false;
+	counter = 0;
 }
 
 BackSeatVarioHandler::~BackSeatVarioHandler()
@@ -19,12 +21,15 @@ BackSeatVarioHandler::~BackSeatVarioHandler()
 
 void BackSeatVarioHandler::run()
 {
-	if (this->btnPressedAndNotTransmitted) {
+	if (this->btnPressedAndNotTransmitted && this->counter == 0) {
 		VarioCmd vario;
 		comm.sendCmd(vario);
-
-		this->btnPressedAndNotTransmitted = false;
+		this->counter = 1;
 	}
+	else if(counter>0) {
+		this->counter -= 1;
+	}
+	this->btnPressedAndNotTransmitted = false;
 }
 
 void BackSeatVarioHandler::handleVarioButtonPressed()

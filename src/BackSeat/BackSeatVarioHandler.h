@@ -12,6 +12,7 @@ class BackSeatVarioHandler : public AbstractVarioHandler
 	mbed::InterruptIn *varioBtn;
 
 	bool btnPressedAndNotTransmitted;
+	uint8_t counter;
 
   public:
 	BackSeatVarioHandler(AbstractCmdSender &comm, PinName varioButtonPin);

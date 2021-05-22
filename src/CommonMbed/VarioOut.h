@@ -6,11 +6,22 @@
 class VarioOut : public AbstractVarioOut
 {
 	DigitalOut &out;
+	DigitalOut &led;
 
   public:
-	VarioOut(DigitalOut &out) : out(out) {}
+	VarioOut(DigitalOut &out, DigitalOut &led) : out(out),led(led) {}
 
 	bool isVario() override { return out.read(); };
 
-	virtual void setVario(bool v) override { out.write(v); }
+	virtual void setVario(bool v) override { 
+		led = !led;
+		out = !out;
+		
+		/*if(v) {
+			out = 0;
+		} else {
+			out = 1;
+		}
+		*/
+	}
 };
