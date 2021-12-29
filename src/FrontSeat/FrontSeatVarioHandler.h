@@ -12,6 +12,7 @@ class FrontSeatVarioHandler : public AbstractVarioHandler
 	mbed::InterruptIn *varioBtn;
 
 	bool btnPressedAndNotHandled;
+	uint8_t counter;
 
   public:
 	FrontSeatVarioHandler(AbstractCmdReceiver &comm, PinName varioButtonPin);

@@ -32,7 +32,9 @@ ADCFlapPosReader reader(A0, raw2led);
 DIOFlapIndicator indicator(leds);
 UARTStateSender comm(PA_2);
 
-BackSeatVarioHandler vario(comm, A3);
+mbed::DigitalOut varioLedPin(D13);
+
+BackSeatVarioHandler vario(comm, A3, varioLedPin);
 
 BackSeat bs(reader, indicator, comm, vario);
 

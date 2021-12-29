@@ -4,15 +4,15 @@
 #include "InterruptIn.h"
 #include "cmd/VarioCmd.h"
 
-BackSeatVarioHandler::BackSeatVarioHandler(AbstractCmdSender &comm, PinName varioButtonPin)
-	: AbstractVarioHandler(), comm(comm)
+BackSeatVarioHandler::BackSeatVarioHandler(AbstractCmdSender &comm, PinName varioButtonPin, mbed::DigitalOut &varioLedPin)
+	: AbstractVarioHandler(), comm(comm), varioLedPin(varioLedPin)
 {
 	varioBtn = new mbed::InterruptIn(varioButtonPin);
 	varioBtn->mode(PullUp);
 	varioBtn->fall(mbed::callback(this, &BackSeatVarioHandler::handleVarioButtonPressed));
 	btnPressedAndNotTransmitted = false;
 	counter = 0;
-}
+	}
 
 BackSeatVarioHandler::~BackSeatVarioHandler()
 {
