@@ -24,6 +24,13 @@ make flashBack
 make flashFront
 ```
 
+### Calibration
+run 
+```
+make flashADCPrint
+```
+
+Connect with mbed Studio to read values from embedded terminal
 
 ## Hardware
 

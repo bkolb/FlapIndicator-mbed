@@ -27,9 +27,9 @@ int main()
 {
 	while (true) {
 		uint16_t raw = reader.readRawVal();
-		printf("raw %i", raw);
+		printf("%u\n", raw);
 
-		ThisThread::sleep_for(500ms);
+		ThisThread::sleep_for(250ms);
 	}
 	return 0;
 }
