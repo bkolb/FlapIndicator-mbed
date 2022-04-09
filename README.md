@@ -1,6 +1,6 @@
 # Flap Indicator
 
-
+![Build state](https://github.com/bkolb/FlapIndicator-mbed/actions/workflows/build.yml/badge.svg?event=push)
 
 
 
