@@ -18,9 +18,9 @@ MBED_OS_DIR := $(ROOT_DIR)/extern/mbed-os
 #
 
 PORT         ?= /dev/tty.usbmodem14303
-BRANCH       ?= master
+BRANCH       ?= mbed-os-6.15.1
 TARGET       ?=
-VERSION      ?= mbed-os-6.6.0
+VERSION      ?= mbed-os-6.15.1
 BAUDRATE     ?= 115200
 BIN_PATH_FRONT     ?= $(BUILD_DIR)/src/FrontSeat/front.bin
 BIN_PATH_BACK     ?= $(BUILD_DIR)/src/BackSeat/back.bin
