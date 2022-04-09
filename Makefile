@@ -81,7 +81,7 @@ clone_mbed:
 	@echo ""
 	@echo "🧬 Cloning Mbed OS ⚗️"
 	@rm -rf $(MBED_OS_DIR)
-	git clone --depth=1 --branch=$(BRANCH) https://github.com/ARMmbed/mbed-os $(MBED_OS_DIR)
+#	git checkout $(BRANCH)
 	@echo ""
 	@echo "🔗 Symlinking templates to Mbed OS directory 🗂️"
 	ln -srf $(CMAKE_DIR)/templates/Template_MbedOS_CMakelists.txt $(MBED_OS_DIR)/CMakeLists.txt

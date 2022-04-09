@@ -3,7 +3,6 @@
 #
 
 .vscode
-extern/mbed-os
 build
 cmake/config/
 .cache
