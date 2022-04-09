@@ -30,7 +30,10 @@ run
 make flashADCPrint
 ```
 
-Connect with mbed Studio to read values from embedded terminal
+The Serial Interface defaults to a 9600 baud standard serial connection (8 bits, 1 stop bit, no parity)
+Connect with mbed Studio to read values from embedded terminal.
+Alternatively:
+`ls /dev/tty.usbmodem*` to find the device. Then `screen /dev/<devicename>`
 
 ## Hardware
 
