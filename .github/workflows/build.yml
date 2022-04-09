@@ -1,0 +1,31 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v3
+      with:
+        python-version: '3.9'
+        cache: 'pip'
+    - uses: ryanwinter/arm-none-eabi-gcc@master
+      with:
+        release: '10.3-2021.10'
+    - uses: seanmiddleditch/gha-setup-ninja@master
+    - name: configure MBED
+      run: make clone_mbed BRANCH=mbed-os-6.15.1
+    - name: install python dependencies
+      run: pip install -r requirements.txt
+    - name: configure
+      run: make config TARGET_BOARD=NUCLEO_L432KC BUILD_TYPE=Debug
+    - name: make
+      run: make

@@ -35,7 +35,7 @@ TARGET_BOARD ?= NUCLEO_L432KC
 all:
 	@echo ""
 	@echo "🏗️  Building application 🚧"
-	cmake --build build -t $(TARGET)
+	cmake --build build
 
 #
 # MARK:- Config targets

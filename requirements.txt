@@ -1,0 +1,5 @@
+mbed-cli
+pyserial
+intelhex
+prettytable
+-r extern/mbed-os/requirements.txt
