@@ -18,7 +18,7 @@ MBED_OS_DIR := $(ROOT_DIR)/extern/mbed-os
 #
 
 PORT         ?= /dev/tty.usbmodem14303
-BRANCH       ?= master
+BRANCH       ?= mbed-os-6.15.1
 TARGET       ?=
 VERSION      ?= mbed-os-6.15.0
 BAUDRATE     ?= 115200

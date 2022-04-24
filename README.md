@@ -8,7 +8,12 @@ Template based on https://github.com/ladislas/mbed-cmake-template/
 # Flap Indicator
 
 ## Software
-We use http://mbed.org/. Due to flashing issues we use version 6.5.0. Basic setup is describes in [Template-Readme](Template-Readme.md)
+We use http://mbed.org/. Due to flashing issues we use version 6.15.1. Basic setup is describes in [Template-Readme](Template-Readme.md)
+
+To setup run
+```
+make clone_mbed
+```
 
 To setup run
 ```
@@ -34,6 +39,11 @@ The Serial Interface defaults to a 9600 baud standard serial connection (8 bits,
 Connect with mbed Studio to read values from embedded terminal.
 Alternatively:
 `ls /dev/tty.usbmodem*` to find the device. Then `screen /dev/<devicename>`
+
+to connect the terminal
+```
+make term PORT=<YOUR PORT> BAUDRATE=9600
+```
 
 ## Hardware
 
