@@ -17,18 +17,16 @@ LedMapping leds {.led1 = DigitalOut(D10),
 				 .ledL = DigitalOut(D3)};
 
 RavVal2LedThreshold raw2led {
-					.LL_VAL		=		20693	,
-					.LL_L5_VAL 	=		20733	,	
-					.L5_VAL		=		21260	,
-					.L5_L4_VAL 	=		22102	,	
-					.L4_VAL		=		22683	,
-					.L4_L3_VAL 	=		27016	,	
-					.L3_VAL		=		27605	,
-					.L3_L2_VAL 	=		31629	,	
-					.L2_VAL		=		32183	,
-					.L2_L1_VAL 	=		36938	,	
-					.L1_VAL		=		37381	
-				};				
+                                .LL_VAL         = 11048,
+                                .L5_VAL         = 21594,
+                                .L4_VAL         = 22895,
+                                .L3_VAL         = 28373,
+                                .L2_VAL         = 32602,
+                                .L1_VAL         = 37664,
+                                .OFFSET         = 700,
+                                .OFFSET_L               = 1000
+                        };
+			
 
 ADCFlapPosReader reader(A0, raw2led);
 DIOFlapIndicator indicator(leds);
