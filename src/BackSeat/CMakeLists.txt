@@ -5,7 +5,7 @@ target_sources(back
     main.cpp
     BackSeatVarioHandler.cpp
     BackSeat.cpp
-    
+
 )
 
 target_include_directories(back

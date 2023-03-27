@@ -30,7 +30,7 @@ make flashFront
 ```
 
 ### Calibration
-run 
+run
 ```
 make flashADCPrint
 ```
@@ -60,7 +60,7 @@ Datasheet: https://www.st.com/resource/en/datasheet/stm32l432kc.pdf
   * D6 -> L-3
   * D5 -> L-4
   * D4 -> L-5
-  * D3 -> L-L 
+  * D3 -> L-L
 * A0 -> AD (+ GND & 3V3)
 * A7 -> UART_TX
 * A3 -> Button
@@ -73,6 +73,6 @@ Datasheet: https://www.st.com/resource/en/datasheet/stm32l432kc.pdf
   * D6 -> L-3
   * D5 -> L-4
   * D4 -> L-5
-  * D3 -> L-L 
+  * D3 -> L-L
 * D0 -> UART_RX
 * D11 -> LX-Vario/SF

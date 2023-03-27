@@ -10,6 +10,7 @@ cmake/config/
 .clangd
 *.ioc.csv
 cube_path.json
+env
 
 
 #

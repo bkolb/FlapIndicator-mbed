@@ -3,7 +3,7 @@ add_mbed_executable(adcprint)
 target_sources(adcprint
   PRIVATE
     main.cpp
-    
+
 )
 
 target_include_directories(adcprint

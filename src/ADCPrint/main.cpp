@@ -8,14 +8,21 @@
 #include "UARTStateExchange.h"
 
 RavVal2LedThreshold raw2led {
-                                .LL_VAL         = 10900,
-                                .L5_VAL         = 21300,
-                                .L4_VAL         = 22800,
-                                .L3_VAL         = 28300,
-                                .L2_VAL         = 32400,
-                                .L1_VAL         = 37800,
-                                .OFFSET         = 700,
-								.OFFSET_L         = 1000,
+								.LL_MAX         = 18000,
+
+                                .L5_MIN         = 18350,
+								.L5_MAX         = 18380,
+
+                                .L4_MIN         = 24580,
+								.L4_MAX         = 24620,
+
+                                .L3_MIN         = 45475,
+								.L3_MAX         = 45500,
+
+                                .L2_MIN         = 59010,
+								.L2_MAX         = 59040,
+
+                                .L1_MIN         = 64810,
                         };
 
 ADCFlapPosReader reader(A0, raw2led);
@@ -82,29 +89,29 @@ int main()
 	varioBtn = new mbed::InterruptIn(varioButtonPin);
 	varioBtn->mode(PullUp);
 	varioBtn->fall(mbed::callback(&handleVarioButtonPressed));
-	/*
+	
 	while (true) {
 		uint16_t raw = reader.readRawVal();
 		printf("%u\n", raw);
 
 		ThisThread::sleep_for(250ms);
 	}
-	*/
+	/*
 	uint16_t flap_Lmin = 65000;
 	uint16_t flap_Lmax = 0;
-	
+
 	uint16_t flap_5min = 65000;
 	uint16_t flap_5max = 0;
-	
+
 	uint16_t flap_4min = 65000;
 	uint16_t flap_4max = 0;
-	
+
 	uint16_t flap_3min = 65000;
 	uint16_t flap_3max = 0;
-	
+
 	uint16_t flap_2min = 65000;
 	uint16_t flap_2max = 0;
-	
+
 	uint16_t flap_1min = 65000;
 	uint16_t flap_1max = 0;
 
@@ -142,4 +149,5 @@ int main()
 
 
 	return 0;
+	*/
 }

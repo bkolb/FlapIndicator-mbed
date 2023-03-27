@@ -17,11 +17,11 @@ MBED_OS_DIR := $(ROOT_DIR)/extern/mbed-os
 # MARK:- Arguments
 #
 
-PORT         ?= /dev/tty.usbmodem14303
+PORT         ?= /dev/tty.usbmodem212403
 BRANCH       ?= mbed-os-6.15.1
 TARGET       ?=
 VERSION      ?= mbed-os-6.15.0
-BAUDRATE     ?= 115200
+BAUDRATE     ?= 9600
 BIN_PATH_FRONT     ?= $(BUILD_DIR)/src/FrontSeat/front.bin
 BIN_PATH_BACK     ?= $(BUILD_DIR)/src/BackSeat/back.bin
 BIN_PATH_ADCPRINT     ?= $(BUILD_DIR)/src/ADCPrint/adcprint.bin
@@ -84,8 +84,8 @@ clone_mbed:
 	git clone --depth=1 --branch=$(BRANCH) https://github.com/ARMmbed/mbed-os $(MBED_OS_DIR)
 	@echo ""
 	@echo "🔗 Symlinking templates to Mbed OS directory 🗂️"
-	ln -srf $(CMAKE_DIR)/templates/Template_MbedOS_CMakelists.txt $(MBED_OS_DIR)/CMakeLists.txt
-	ln -srf $(CMAKE_DIR)/templates/Template_MbedOS_mbedignore.txt $(MBED_OS_DIR)/.mbedignore
+	ln -sf $(CMAKE_DIR)/templates/Template_MbedOS_CMakelists.txt $(MBED_OS_DIR)/CMakeLists.txt
+	ln -sf $(CMAKE_DIR)/templates/Template_MbedOS_mbedignore.txt $(MBED_OS_DIR)/.mbedignore
 
 curl_mbed:
 	@echo ""
@@ -97,8 +97,8 @@ curl_mbed:
 	rm -rf $(VERSION).tar.gz
 	@echo ""
 	@echo "🔗 Symlinking templates to Mbed OS directory 🗂️"
-	ln -srf $(CMAKE_DIR)/templates/Template_MbedOS_CMakelists.txt $(MBED_OS_DIR)/CMakeLists.txt
-	ln -srf $(CMAKE_DIR)/templates/Template_MbedOS_mbedignore.txt $(MBED_OS_DIR)/.mbedignore
+	ln -sf $(CMAKE_DIR)/templates/Template_MbedOS_CMakelists.txt $(MBED_OS_DIR)/CMakeLists.txt
+	ln -sf $(CMAKE_DIR)/templates/Template_MbedOS_mbedignore.txt $(MBED_OS_DIR)/.mbedignore
 
 #
 # MARK:- Utils targets

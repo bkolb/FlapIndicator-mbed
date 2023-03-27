@@ -13,13 +13,13 @@ class VarioOut : public AbstractVarioOut
 
 	bool isVario() override { return out.read(); };
 
-	virtual void setVario(bool v) override { 
+	virtual void setVario(bool v) override {
 		//led = !led;
 		//out = !out;
 
 		led = v;
 		out = v;
-		
+
 		/*if(v) {
 			out = 0;
 		} else {
